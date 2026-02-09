@@ -1,0 +1,14 @@
+<!-- Product Popup (Global – only once) -->
+<div id="product-popup" hidden>
+  <div class="overlay"></div>
+  <div class="popup">
+    <button id="popup-close">×</button>
+    <h2 id="popup-title"></h2>
+    <p id="popup-price"></p>
+    <div id="popup-desc"></div>
+    <div id="popup-variants"></div>
+    <button id="add-to-cart">Add to Cart</button>
+  </div>
+</div>
+
+{{ 'product-popup.js' | asset_url | script_tag }}
