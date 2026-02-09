@@ -1,0 +1,70 @@
+<section class="product-grid" data-auto-jacket="{{ section.settings.auto_jacket }}">
+  <div class="grid-wrapper">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+      {% if product %}
+        <div class="product-card"
+             data-handle="{{ product.handle }}">
+          <div class="circle"></div>
+          <h3>{{ product.title }}</h3>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  padding: 40px;
+}
+.product-card {
+  text-align: center;
+  cursor: pointer;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  background: #f3f3f3;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+@media (max-width: 768px) {
+  .grid-wrapper { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 480px) {
+  .grid-wrapper { grid-template-columns: 1fr; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "settings": [
+    {
+      "type": "product",
+      "id": "auto_jacket",
+      "label": "Soft Winter Jacket (Auto Add)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Custom Product Grid" }
+  ]
+}
+{% endschema %}
